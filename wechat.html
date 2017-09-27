@@ -159,9 +159,12 @@
 		    color: rgb(155, 155, 155);
 		    font-size: 0.11rem;
 		}
+		.hide{
+			display: none;
+		}
 	</style>
 </head>
-<body>
+<body id="body" class="hide">
 	  <div class="head">
 	    <span class="return"></span>
 	    <h2>今日菜单</h2>
@@ -179,7 +182,7 @@
 	  	<div class="noMenu">
 	  	</div>
 	  	<div class="showMenu">
-	  		<div class="menuCard">
+	  		<!--<div class="menuCard">
 	  			<div class="menuImg">
 	  				<img src="冬笋烧肉.png" alt="冬笋烧肉">
 	  			</div>
@@ -245,7 +248,8 @@
 	  					豆腐鲜嫩爽口，而更令人_留恋的是圆碟中的蛋黄，_香溢满口，可谓是集色泽、_味道与文化内涵于一碟。
 	  				</span>
 	  			</div>
-	  		</div><div class="menuCard">
+	  		</div>
+	  		<div class="menuCard">
 	  			<div class="menuImg">
 	  				<img src="冬笋烧肉.png" alt="冬笋烧肉">
 	  			</div>
@@ -255,7 +259,7 @@
 	  					豆腐鲜嫩爽口，而更令人_留恋的是圆碟中的蛋黄，_香溢满口，可谓是集色泽、_味道与文化内涵于一碟。
 	  				</span>
 	  			</div>
-	  		</div>
+	  		</div>-->
 	  	</div>
 	  </div>
 		<script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
@@ -274,12 +278,35 @@
 		    win.addEventListener(resizeEvt, recalc, false);
 		    doc.addEventListener('DOMContentLoaded', recalc, false);
 		    // 一物理像素在不同屏幕的显示效果不一样。要根据devicePixelRatio来修改meta标签的scale,要注释上面的meta标签
-		    //document.getElementById('app').removeAttribute("class");
+		    document.getElementById('body').removeAttribute("class");
 		})(document, window);
 
+		$(document).ready(function(){
+			query();
+		});
 		$("#inputDate").on("change", function() {
 			alert($(this).val());
 		});
+
+		function query() {
+			var html = "";
+			for(var i = 0; i < 10; i++) {
+				html += `
+					<div class="menuCard">
+			  			<div class="menuImg">
+			  				<img src="冬笋烧肉.png" alt="冬笋烧肉">
+			  			</div>
+			  			<div class="menuInfo">
+			  				<h4>冬笋烧肉</h4>
+			  				<span class="menuDetail">
+			  					豆腐鲜嫩爽口，而更令人_留恋的是圆碟中的蛋黄，_香溢满口，可谓是集色泽、_味道与文化内涵于一碟。
+			  				</span>
+			  			</div>
+			  		</div>
+				`;
+			}
+			$(".showMenu").append(html);
+		}
 	  </script>
 </body>
 </html>
