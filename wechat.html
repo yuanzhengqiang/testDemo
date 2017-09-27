@@ -29,12 +29,14 @@
 		}
 		.head h2{
 			position: absolute;
-			top: 0.03rem;
+			top: 0rem;
 			left: 50%;
-			webkit-transform: translateX(-50%) translateY(-0.025rem);
-			-moz-transform: translateX(-50%) translateY(-0.025rem);
-			-ms-transform: translateX(-50%) translateY(-0.025rem);
-			transform: translateX(-50%) translateY(-0.025rem);
+			height: 0.3rem;
+    		line-height: 0.3rem;
+			webkit-transform: translateX(-50%);
+			-moz-transform: translateX(-50%) ;
+			-ms-transform: translateX(-50%) ;
+			transform: translateX(-50%) ;
 			margin: 0rem;
 			font-size: 0.16rem;
 		    font-weight: 400;
@@ -44,6 +46,10 @@
 			position: absolute;
 			top: 0.05rem;
 			left: 0.1rem;
+			width: 0.15rem;
+			height: 0.15rem;
+			background-image: url(返回.png);
+			background-size: 100%;
 		}
 		.headInfo{
 			position: absolute;
@@ -82,12 +88,15 @@
 			position: absolute;
 			top: 0.75rem;
 			bottom:0rem;
-			padding: 0.16rem 0.1rem;
+			padding: 0.12rem 0.1rem;
 			width: 100%;
 			height: auto;
 			overflow-y:auto; 
 			font-size: 0.1rem;
 			font-family: "CN Register";
+			-webkit-box-sizing: border-box;
+		    -moz-box-sizing: border-box;
+		    box-sizing: border-box;
 		}
 		.noMenu{
 			width: 100%;
@@ -95,15 +104,19 @@
 			background-image: url(noMenu.png);
 			background-size: 100%
 			background-position:2rem 0rem;
+			display: none;
 		}
 		.showMenu{
 			width: 100%;
 		    height: auto;
+		    -webkit-box-sizing: border-box;
+		    -moz-box-sizing: border-box;
+		    box-sizing: border-box;
 		}
 		.menuCard{
-			width: 50%;
+			width: calc( 50% - 0.08rem );
 		    height: 2.2rem;
-		    margin: 0.07rem;
+		    margin: 0.03rem;
 		    display: inline-block;
 		    -webkit-box-sizing: border-box;
 		    -moz-box-sizing: border-box;
@@ -139,7 +152,7 @@
 </head>
 <body>
 	  <div class="head">
-	    <span class="return">返回</span>
+	    <span class="return"></span>
 	    <h2>今日菜单</h2>
 	  </div>
 	  <div class="headInfo">
