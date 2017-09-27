@@ -7,7 +7,6 @@
 	<meta name="description" content="Xenon Boostrap Admin Panel" />
 	<meta name="author" content="" />
 	<title>Document</title>
-	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<style>
 		html{font-size: 100px;}
 		body{
@@ -81,12 +80,9 @@
 			text-align: right;
 			color: #009ed6;
 		}
-		.headInfoRight span:after{
-			width: 0.1rem;
-			height: 0.14rem;
+		.headInfoRight span::before { 
+			content: url(日期选择-箭头标.png); 
 			font-size: 0.14rem;
-			background-image: url(日期选择-箭头标.png);
-			background-size: 0.1rem 0.14rem;
 		}
 		.mainInfo{
 			position: absolute;
