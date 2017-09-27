@@ -120,10 +120,12 @@
 		}
 		.noMenuImg{
 			width: 100%;
-			height: 2rem;
-			margin-top: 3rem;
+			height: 1.2rem;
+			margin-top: 1.6rem;
 			background-image: url(noMenu.png);
 			background-size: 100%;
+			background-repeat:no-repeat;
+    		background-position:center;
 		}
 		.menuCard{
 			width: calc( 50% - 0.06rem );
@@ -177,7 +179,7 @@
 	    	<h3>某养老机构名称</h3>
 	    </div>
 	    <div class="headInfoRight">
-	    	<span>2017年9月20日</span><span class="selectDate" id="selectDate" onclick="$('#inputDate').click()"></span>
+	    	<span id="selectDate">2017年9月20日<span class="selectDate"></span></span>
 	    	<input type="date" id="inputDate" style="display:none">
 	    </div>
 	  </div>
@@ -286,7 +288,12 @@
 		})(document, window);
 
 		$(document).ready(function(){
-			query();
+			//query();
+		});
+
+		$("#selectDate").on("click", function() {
+			alert(1);
+			$("#inputDate").click();
 		});
 		$("#inputDate").on("change", function() {
 			alert($(this).val());
