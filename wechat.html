@@ -80,9 +80,11 @@
 			text-align: right;
 			color: #009ed6;
 		}
-		.headInfoRight span::before { 
-			content: url(日期选择-箭头标.png); 
-			font-size: 0.14rem;
+		.selectDate{
+			width: 0.1rem;
+			height: 0.14rem;
+			background-image: url(日期选择-箭头标.png);
+			background-size: 100%;
 		}
 		.mainInfo{
 			position: absolute;
@@ -169,7 +171,7 @@
 	    	<h3>某养老机构名称</h3>
 	    </div>
 	    <div class="headInfoRight">
-	    	<span>2017年9月20日</span>
+	    	<span>2017年9月20日</span><span class="selectDate"></span>
 	    </div>
 	  </div>
 	  <div class="mainInfo">
