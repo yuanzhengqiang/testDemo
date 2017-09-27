@@ -182,10 +182,10 @@
 	    </div>
 	  </div>
 	  <div class="mainInfo">
-	  	<div class="noMenu">
+	  	<div class="noMenu" id="noMenu">
 	  		<div class="noMenuImg"></div>
 	  	</div>
-	  	<div class="showMenu" style="display:none">
+	  	<div class="showMenu" style="display:none" id="showMenu">
 	  		<!--<div class="menuCard">
 	  			<div class="menuImg">
 	  				<img src="冬笋烧肉.png" alt="冬笋烧肉">
@@ -309,7 +309,9 @@
 			  		</div>
 				`;
 			}
-			$(".showMenu").append(html);
+			$("#showMenu").append(html);
+			$("#noMenu").hide();
+			$("#showMenu").show();
 		}
 	  </script>
 </body>
