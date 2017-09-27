@@ -7,6 +7,7 @@
 	<meta name="description" content="Xenon Boostrap Admin Panel" />
 	<meta name="author" content="" />
 	<title>Document</title>
+	<link rel="stylesheet" href="iscroll.css">
 	<style>
 		html{font-size: 100px;}
 		body{
@@ -167,9 +168,29 @@
 		.hide{
 			display: none;
 		}
+		.opacity{
+	        -webkit-animation: opacity 0.3s linear;
+	        animation: opacity 0.3s linear;
+	    }
+	    @-webkit-keyframes opacity {
+	        0% {
+	            opacity:0;
+	        }
+	        100% {
+	            opacity:1;
+	        }
+	    }
+	    @keyframes opacity {
+	        0% {
+	            opacity:0;
+	        }
+	        100% {
+	            opacity:1;
+	        }
+	    }
 	</style>
 </head>
-<body id="body" class="hide">
+<body class="hide" id="wrapper">
 	  <div class="head">
 	    <span class="return"></span>
 	    <h2>今日菜单</h2>
@@ -183,15 +204,20 @@
 	    	<input type="date" id="inputDate" style="display:none">
 	    </div>
 	  </div>
-	  <div class="mainInfo">
+	  <div class="mainInfo" id="scroller">
 	  	<div class="noMenu" id="noMenu">
 	  		<div class="noMenuImg"></div>
 	  	</div>
 	  	<div class="showMenu" style="display:none" id="showMenu">
 	  		
 	  	</div>
+	  	<div id = "scroller-pullUp">
+			<span id = "up-icon" class = "icon-double-angle-up pull-up-icon"></span>
+			<span id = "pullUp-msg" class = "pull-up-msg">上拉刷新</span>
+		</div>
 	  </div>
 		<script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+		<script type="text/javascript" src="iscroll.js"></script>
 	  <script type="text/javascript">
 	  	(function (doc, win) {
 		    // 分辨率Resolution适配
@@ -207,11 +233,12 @@
 		    win.addEventListener(resizeEvt, recalc, false);
 		    doc.addEventListener('DOMContentLoaded', recalc, false);
 		    // 一物理像素在不同屏幕的显示效果不一样。要根据devicePixelRatio来修改meta标签的scale,要注释上面的meta标签
-		    document.getElementById('body').removeAttribute("class");
+		    document.getElementById('wrapper').removeAttribute("class");
 		})(document, window);
 
 		$(document).ready(function(){
 			query();
+			loaded();
 		});
 
 		$("#selectDate").on("click", function() {
@@ -222,9 +249,38 @@
 			alert($(this).val());
 		});
 
+		function loaded () {
+			var myScroll,
+				upIcon = $("#up-icon");
+				
+			myScroll = new IScroll('#wrapper', { probeType: 3, mouseWheel: true });
+			
+			myScroll.on("scroll",function(){
+				var y = this.y,
+					maxY = this.maxScrollY - y,
+					upHasClass = upIcon.hasClass("reverse_icon");
+				
+				if(maxY >= 40){
+					!upHasClass && upIcon.addClass("reverse_icon");
+					return "";
+				}else if(maxY < 40 && maxY >=0){
+					upHasClass && upIcon.removeClass("reverse_icon");
+					return "";
+				}
+			});
+			
+			myScroll.on("slideUp",function(){
+				if(this.maxScrollY - this.y > 40){
+					alert("slideUp");
+					upIcon.removeClass("reverse_icon")
+				}
+			});
+		}
+
+
 		function query() {
 			var html = "";
-			for(var i = 0; i < 10; i++) {
+			for(let i = 0; i < 10; i++) {
 				html += `
 					<div class="menuCard">
 			  			<div class="menuImg">
