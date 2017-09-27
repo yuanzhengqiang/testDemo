@@ -277,8 +277,8 @@
 		    //document.getElementById('app').removeAttribute("class");
 		})(document, window);
 
-		$("#selectDate").on("click", function() {
-			$("#inputDate").click();
+		$("#inputDate").on("change", function() {
+			alert($(this).val());
 		});
 	  </script>
 </body>
